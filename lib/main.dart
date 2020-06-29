@@ -166,7 +166,73 @@ class Grade extends StatelessWidget {
           ],
         ),
       ),
-
+      drawer: Drawer(
+        // leading을 써서 아이콘을 만들어주지 않아도 햄버거 모양의 아이콘이 생성된다
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                //현재 사용자의 이미지를 가져옴
+                backgroundImage: AssetImage('assets/ogu_login.png'),
+                backgroundColor: Colors.white,
+              ),
+              otherAccountsPictures: <Widget>[
+                //한 개 이상의 계정 이미지를 가져올 수 있기에 위젯 리스트 형식을 띄게 됨
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/jake.jpg'),
+                  backgroundColor: Colors.white,
+                )
+              ],
+              accountName: Text('OGU'),
+              // 필수항목
+              accountEmail: Text('OGU@1dea.kr'),
+              // 필수항목
+              onDetailsPressed: () {
+                //작은 삼각형 디테일 버튼
+                print("ondetail button click");
+              },
+              decoration: BoxDecoration(
+                  color: Colors.blue[200],
+                  borderRadius: BorderRadius.only(
+                    // 좌우 하단부 곡선 처리
+                    bottomLeft: Radius.circular(40.0),
+                    bottomRight: Radius.circular(40.0),
+                  )),
+            ),
+            ListTile(
+              leading: Icon(Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('Home'),
+              onTap: (){
+                print('home is clicked');
+              },
+              trailing: Icon(Icons.add), // 리스트 타일 오른쪽 아이콘 추가
+            ),
+            ListTile(
+              leading: Icon(Icons.settings,
+                color: Colors.grey[850],
+              ),
+              title: Text('Settings'),
+              onTap: (){
+                print('settings is clicked');
+              },
+              trailing: Icon(Icons.add), // 리스트 타일 오른쪽 아이콘 추가
+            ),
+            ListTile(
+              leading: Icon(Icons.question_answer,
+                color: Colors.grey[850],
+              ),
+              title: Text('Q&A'),
+              onTap: (){
+                print('qna is clicked');
+              },
+              trailing: Icon(Icons.add), // 리스트 타일 오른쪽 아이콘 추가
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
