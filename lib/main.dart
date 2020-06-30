@@ -112,6 +112,10 @@ class Grade extends StatelessWidget {
                         );
                       },
                     ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Non_builder_snackbar(),
                   ],
                 ),
                 SizedBox(
@@ -266,6 +270,28 @@ class Grade extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Non_builder_snackbar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      child: Text('Hi'),
+      onPressed: () {
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Hi My name is OGU',
+              textAlign: TextAlign.center, // 텍스트 가운데 정렬
+              style: TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.blue,
+            duration: Duration(milliseconds: 1000), // 스낵바 1초
+          ),
+        );
+      },
     );
   }
 }
