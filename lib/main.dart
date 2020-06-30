@@ -65,7 +65,6 @@ class Grade extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start, //가로축 시작점 정렬
               children: <Widget>[
-
                 Divider(
                   //구분선 위젯
                   height: 60.0, //구분선의 위 아래 30픽셀씩 띄워주기
@@ -83,14 +82,37 @@ class Grade extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text(
-                  'OGU',
-                  style: TextStyle(
-                    color: Colors.white,
-                    letterSpacing: 2.0, //철자 간격 조정
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      'OGU',
+                      style: TextStyle(
+                        color: Colors.white,
+                        letterSpacing: 2.0, //철자 간격 조정
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Builder(
+                      builder: (BuildContext ctx) {
+                        return FlatButton(
+                          child: Text(
+                            'Hi',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          color: Colors.blue,
+                          onPressed: () {
+                            Scaffold.of(ctx).showSnackBar(SnackBar(
+                              content: Text('Hello! My name is OGU'),
+                            ));
+                          },
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 30.0,
@@ -165,7 +187,6 @@ class Grade extends StatelessWidget {
               ],
             ),
           ),
-
           Center(
             child: CircleAvatar(
               backgroundImage: AssetImage('assets/ogu.png'),
@@ -210,31 +231,34 @@ class Grade extends StatelessWidget {
                   )),
             ),
             ListTile(
-              leading: Icon(Icons.home,
+              leading: Icon(
+                Icons.home,
                 color: Colors.grey[850],
               ),
               title: Text('Home'),
-              onTap: (){
+              onTap: () {
                 print('home is clicked');
               },
               trailing: Icon(Icons.add), // 리스트 타일 오른쪽 아이콘 추가
             ),
             ListTile(
-              leading: Icon(Icons.settings,
+              leading: Icon(
+                Icons.settings,
                 color: Colors.grey[850],
               ),
               title: Text('Settings'),
-              onTap: (){
+              onTap: () {
                 print('settings is clicked');
               },
               trailing: Icon(Icons.add), // 리스트 타일 오른쪽 아이콘 추가
             ),
             ListTile(
-              leading: Icon(Icons.question_answer,
+              leading: Icon(
+                Icons.question_answer,
                 color: Colors.grey[850],
               ),
               title: Text('Q&A'),
-              onTap: (){
+              onTap: () {
                 print('qna is clicked');
               },
               trailing: Icon(Icons.add), // 리스트 타일 오른쪽 아이콘 추가
