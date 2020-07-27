@@ -1,6 +1,56 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
+class Point {
+  num x;
+  num y;
+  ​
+  Point(num x, num y) {
+    this.x = x;
+    this.y = y;
+  }
+  ​
+  Point.origin() {
+    x = 0;
+    y = 0;
+  }
+  ​
+  Point.fromJson(Map<String, num> json)
+      : x = json['x'],
+        y = json['y'] {
+    print('In Point.fromJson(): ($x, $y)');
+  }
+}
+
+abstract class Robot {
+  ​
+  Robot.create();
+  ​
+  factory Robot(RobotType type) { // 팩토리 생성자
+  switch(type) {
+  case RobotType.Clean:
+  return CleanRobot();
+  case RobotType.War:
+  return WarRobot();
+  }
+  }
+  ​
+  String getName();
+  String command();
+}
+​
+enum RobotType{
+  Clean,War
+}
+
+Map<String, int> map = Map<String, int>();
+map.putIfAbsent("height", () => 175); // 키가 없을 때만 값을 추가
+map.putIfAbsent("height", () => 180);
+​
+print(map["height"]); // 175 출력
+​
+map["height"] = 190; // 이미 키가 있어도 값을 추가
+print(map["height"]); // 190 출력
 
 class MyApp extends StatelessWidget {
   @override
@@ -56,6 +106,7 @@ class Grade extends StatelessWidget {
               child: CircleAvatar(
                 //이미지를 원형으로
                 backgroundImage: AssetImage('assets/ogu.gif'),
+                
                 radius: 60.0,
               ),
             ),
